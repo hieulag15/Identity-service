@@ -65,4 +65,11 @@ public class UserController {
     void deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
     }
+
+    @GetMapping("/my-info")
+    ApiResponse<UserResponse> getMyInfo() {
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getMyInfo())
+                .build();
+    }
 }
