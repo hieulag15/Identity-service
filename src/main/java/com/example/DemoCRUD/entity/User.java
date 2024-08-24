@@ -26,5 +26,12 @@ public class User {
     String firstName;
     String lastName;
     LocalDate dob;
-    Set<String> roles;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_name")
+    )
+    Set<Role> roles;
 }
